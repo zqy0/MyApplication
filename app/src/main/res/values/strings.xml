@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="title_activity_main2">Main2Activity</string>
+
+    <!--底部导航栏-->
+    <string name="home">主页</string>
+    <string name="user">我的</string>
+    <string name="explore">发现</string>
+    <string name="shopping">订单</string>
+</resources>
