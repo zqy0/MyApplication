@@ -19,9 +19,18 @@ import com.example.zqy.myapplication.home.ui.HomeFragment;
 import com.example.zqy.myapplication.shopping.ui.ShoppingFragment;
 import com.example.zqy.myapplication.user.ui.UserFragment;
 import com.example.zqy.myapplication.utils.BottomNavigationViewHelper;
+import com.example.zqy.myapplication.utils.FragmentUtils;
 import com.example.zqy.myapplication.utils.LogUtils;
 
+import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobInstallation;
+import cn.bmob.v3.BmobInstallationManager;
+import cn.bmob.v3.InstallationListener;
+import cn.bmob.v3.exception.BmobException;
+
 /**
+ * TODO 1. RecyclerView的点击事件 ok 2. Tag no 3. Bmob数据分食堂查询 ok 4. 订单详情页的试图 5. 交易的数据表
+ *
  * Created by zqy on 17-10-21.
  */
 
@@ -30,20 +39,32 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     private Toolbar toolbar;
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         LogUtils.d("1", getClass().getSimpleName());
         setContentView(R.layout.activity_main);
+        Bmob.initialize(this, "e01990f453876ec8667dbc94fb0ff9ef");
 
-        initToolbar();
+        BmobInstallationManager.getInstance().initialize(new InstallationListener<BmobInstallation>() {
+            @Override
+            public void done(BmobInstallation bmobInstallation, BmobException e) {
+                if (e == null) {
+                    LogUtils.i("bmobInstallationInfo", bmobInstallation.getObjectId() + "-" + bmobInstallation.getInstallationId());
+                } else {
+                    LogUtils.e("error", e.getMessage());
+                }
+            }
+        });
+
 
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
         // 使用反射去除大于3个item时产生的效果
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.homepage);
-        replaceFragment(new HomeFragment());
+
+        FragmentUtils.add(new HomeFragment(), this, R.id.frameLayout);
+//        replaceFragment(new HomeFragment());
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -52,6 +73,8 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.explore:
                         item.setChecked(true);
                         replaceFragment(new ExploreFragment());
+
+//                        FragmentUtils.replace(new ExploreFragment(), MainActivity.this, R.id.frameLayout);
                         break;
                     case R.id.account_user:
                         item.setChecked(true);
@@ -76,28 +99,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void initToolbar() {
-        toolbar = (Toolbar) findViewById(R.id.include_toolbar);
-        setSupportActionBar(toolbar);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_toolbar, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.app_bar_search:
-                Toast.makeText(this, "搜索中", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.app_bar_setting:
-                break;
-        }
-        return true;
-    }
 
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();

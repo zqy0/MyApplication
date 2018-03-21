@@ -2,6 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.zqy.myapplication">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,6 +19,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
+            android:launchMode="singleTask"
             android:label="@string/home">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,6 +36,18 @@
         
         <activity android:name=".home.ui.HomeDetailActivity"
             android:label="@string/app_name">
+
+        </activity>
+
+        <activity android:name=".user.ui.UserInfoActivity">
+
+        </activity>
+
+        <activity android:name=".account.ui.AuthenticatorActivity">
+
+        </activity>
+
+        <activity android:name=".settings.ui.SettingsActivity">
 
         </activity>
 

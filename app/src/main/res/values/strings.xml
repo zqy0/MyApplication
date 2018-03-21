@@ -1,10 +1,27 @@
 <resources>
     <string name="app_name">My Application</string>
-    <string name="title_activity_main2">Main2Activity</string>
+
 
     <!--底部导航栏-->
     <string name="home">主页</string>
     <string name="user">我的</string>
     <string name="explore">发现</string>
     <string name="shopping">订单</string>
+
+    <!--主页元素-->
+    <string name="home_hall_1">一食堂</string>
+    <string name="home_hall_2">二食堂</string>
+    <string name="home_hall_3">三食堂</string>
+    <string name="home_hall_4">四食堂</string>
+    <string name="home_hall_qingzhen">清真</string>
+
+
+    <!--我的元素-->
+
+
+    <!--设置元素-->
+    <string name="settings">设置</string>
+
+
+
 </resources>
