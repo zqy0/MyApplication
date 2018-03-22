@@ -1,7 +1,11 @@
 package com.example.zqy.myapplication.model;
 
+import com.example.zqy.myapplication.home.ui.HomeDetailActivity;
+
 import cn.bmob.v3.BmobObject;
 import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.listener.FindListener;
+import cn.bmob.v3.listener.UpdateListener;
 
 /**
  * Created by zqy on 17-12-13.
@@ -38,4 +42,5 @@ public class UserAccount extends BmobObject {
     public void setAccount_state(Boolean account_state) {
         this.account_state = account_state;
     }
+
 }

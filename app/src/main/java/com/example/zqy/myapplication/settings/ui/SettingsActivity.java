@@ -12,6 +12,7 @@ import cn.bmob.v3.BmobUser;
 
 /**
  * Created by zqy on 17-12-6.
+ * 设置页面
  */
 
 public class SettingsActivity extends AppCompatActivity {

@@ -22,6 +22,7 @@ import cn.bmob.v3.listener.SaveListener;
 
 /**
  * Created by zqy on 17-12-4.
+ * 用户注册
  */
 
 public class AuthenticatorActivity extends AppCompatActivity {

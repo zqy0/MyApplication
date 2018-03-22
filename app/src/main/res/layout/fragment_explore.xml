@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/btn_explore"
         android:layout_width="212dp"
         android:layout_height="162dp"
         android:layout_marginStart="106dp"

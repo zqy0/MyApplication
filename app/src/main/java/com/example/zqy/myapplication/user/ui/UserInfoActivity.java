@@ -18,7 +18,5 @@ public class UserInfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_userinfo);
 
 
-
-
     }
 }

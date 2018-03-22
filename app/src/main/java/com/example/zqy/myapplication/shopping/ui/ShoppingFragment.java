@@ -1,7 +1,7 @@
 package com.example.zqy.myapplication.shopping.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,11 +14,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.zqy.myapplication.R;
-
+import com.example.zqy.myapplication.account.ui.AuthenticatorActivity;
 import com.example.zqy.myapplication.model.Order;
 import com.example.zqy.myapplication.utils.InitToolBarUtils;
 import com.example.zqy.myapplication.utils.LogUtils;
 import com.example.zqy.myapplication.utils.MyDividerItemDecoration;
+import com.example.zqy.myapplication.utils.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +31,7 @@ import cn.bmob.v3.listener.FindListener;
 
 /**
  * Created by zqy on 17-10-26.
+ * 订单界面，用户未登录时跳转到登录界面，登录时直接查询订单信息
  */
 
 public class ShoppingFragment extends Fragment {
@@ -45,7 +47,17 @@ public class ShoppingFragment extends Fragment {
 
         InitToolBarUtils.initToolbar(this,R.id.include_toolbar, R.string.shopping);
 
-        ininquireListData(view);
+
+        BmobUser bmobUser = BmobUser.getCurrentUser();
+        if(bmobUser != null){
+            // 查询订单列表数据
+            ininquireListData(view);
+        }else{
+            //缓存用户对象为空时， 可打开用户注册界面…
+            Intent intent = new Intent(getActivity(), AuthenticatorActivity.class);
+            startActivity(intent);
+            ToastUtils.show("请注册或登录", getActivity());
+        }
 
         return view;
     }

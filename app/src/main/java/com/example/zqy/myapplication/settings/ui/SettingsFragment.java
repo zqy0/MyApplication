@@ -33,8 +33,8 @@ public class SettingsFragment extends Fragment{
                 true);
 
 
-        Button button = view.findViewById(R.id.btn_logout);
-        button.setOnClickListener(new View.OnClickListener() {
+        Button button1 = view.findViewById(R.id.btn_logout);
+        button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 BmobUser.logOut();
