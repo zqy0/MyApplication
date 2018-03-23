@@ -87,58 +87,22 @@ public class UserFragment extends Fragment {
         btn_money_query.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final UserAccount userAccount = new UserAccount();
-                final BmobUser bmobUser = BmobUser.getCurrentUser();
-
-                final BmobQuery<Order> query = new BmobQuery<>();
-                query.addWhereEqualTo("order_user_id", bmobUser.getObjectId());
-
-                query.findObjects(new FindListener<Order>() {
+                BmobUser user = BmobUser.getCurrentUser();
+                BmobQuery<UserAccount> query = new BmobQuery<>();
+                query.addWhereEqualTo("bmobUser", user.getObjectId());
+                query.findObjects(new FindListener<UserAccount>() {
                     @Override
-                    public void done(List<Order> list, BmobException e) {
+                    public void done(List<UserAccount> list, BmobException e) {
                         if (e == null) {
-                            Float all_prices = 0.0f;
-                            Float prices;
-                            ToastUtils.show("共"+ list.size() + "条数据", getActivity());
-                            for (Order order : list) {
-                                prices = order.getOrder_food_prices();
-                                all_prices += prices;
+                            // 获取单条账户数据
+                            if (list != null && list.size() > 0) {
+                                UserAccount userAccount = list.get(0);
+                                ToastUtils.show("当前余额" +userAccount.getAccount_money(),getActivity());
+
                             }
-                            final Float final_all_prices = all_prices;
-                            ToastUtils.show(String.valueOf(all_prices), getActivity());
-
-
-                            BmobQuery<UserAccount> query2 = new BmobQuery<>();
-                            query2.addWhereEqualTo("bmobUser", bmobUser.getObjectId());
-
-                            query2.findObjects(new FindListener<UserAccount>() {
-                                @Override
-                                public void done(List<UserAccount> list, BmobException e) {
-                                    if (e == null) {
-
-                                        for (UserAccount userAccount : list) {
-                                            Float account_money = userAccount.getAccount_money();
-                                            ToastUtils.show(String.valueOf(account_money), getActivity());
-
-                                            Float final_account_money = account_money - final_all_prices;
-                                            tv_money.setText(String.valueOf(final_account_money));
-
-
-                                        }
-                                    } else {
-                                        LogUtils.i("bmob","失败："+e.getMessage()+","+e.getErrorCode());
-                                    }
-                                }
-                            });
-
-
-
-                        } else {
-                            LogUtils.i("bmob","失败："+e.getMessage()+","+e.getErrorCode());
                         }
                     }
                 });
-
             }
         });
 

@@ -131,14 +131,15 @@ public class HomeDetailActivity extends BaseActivity {
     f
      */
     private void update_account_money(final Float order_prices) {
-        BmobUser user = BmobUser.getCurrentUser();
+        final BmobUser user = BmobUser.getCurrentUser();
         BmobQuery<UserAccount> query = new BmobQuery<>();
         query.addWhereEqualTo("bmobUser", user.getObjectId());
         query.findObjects(new FindListener<UserAccount>() {
             @Override
             public void done(List<UserAccount> list, BmobException e) {
                 if (e ==null) {
-                    for (UserAccount userAccount: list) {
+                    if (list != null && list.size() > 0) {
+                        UserAccount userAccount = list.get(0);
                         Float account_money = userAccount.getAccount_money();
                         LogUtils.d("Home", String.valueOf(account_money));
                         LogUtils.d("Home", String.valueOf(order_prices));
