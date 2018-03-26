@@ -24,7 +24,6 @@ import cn.bmob.v3.listener.SaveListener;
 
 public class AuthenticatorFragment extends Fragment {
 
-    BmobUser bmobUser = new BmobUser();
 
     private EditText NameEditText;
     private EditText PasswordEditText;
@@ -51,6 +50,8 @@ public class AuthenticatorFragment extends Fragment {
     }
 
     private void login() {
+
+        BmobUser bmobUser = new BmobUser();
 
         final String name = String.valueOf(NameEditText.getText());
         String password = String.valueOf(PasswordEditText.getText());

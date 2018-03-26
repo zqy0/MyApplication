@@ -32,7 +32,7 @@ public class AuthenticatorActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_authenticator);
-        FragmentUtils.add(new AuthenticatorFragment(), this, android.R.id.content);
+        FragmentUtils.add(new AuthenticatorSignInFragment(), this, android.R.id.content);
 
 //        replaceFragment(new AuthenticatorFragment());
     }
