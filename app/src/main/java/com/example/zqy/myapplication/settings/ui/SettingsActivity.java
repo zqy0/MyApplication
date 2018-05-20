@@ -7,6 +7,7 @@ import android.view.MenuItem;
 
 import com.example.zqy.myapplication.R;
 import com.example.zqy.myapplication.utils.FragmentUtils;
+import com.example.zqy.myapplication.utils.InitToolBarUtils;
 
 import cn.bmob.v3.BmobUser;
 
@@ -22,13 +23,15 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+
         BmobUser bmobUser = BmobUser.getCurrentUser();
         if(bmobUser != null){
-            // 显示登出部分
+            // 用户已登录时的设置页面
             FragmentUtils.add(new SettingsFragment(), this, R.id.frameLayout_settings);
 
         }else{
-            //缓存用户对象为空时， 可打开用户注册界面…
+            //缓存用户对象为空时
+            FragmentUtils.add(new SettingsFragmentNotLogin(), this, R.id.frameLayout_settings);
 
         }
 

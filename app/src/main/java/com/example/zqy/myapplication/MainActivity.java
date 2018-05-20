@@ -9,10 +9,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.example.zqy.myapplication.explore.ui.ExploreFragment;
 import com.example.zqy.myapplication.home.ui.HomeFragment;
@@ -42,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        LogUtils.d("1", getClass().getSimpleName());
         setContentView(R.layout.activity_main);
         Bmob.initialize(this, "e01990f453876ec8667dbc94fb0ff9ef");
 
@@ -64,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setSelectedItemId(R.id.homepage);
 
         FragmentUtils.add(new HomeFragment(), this, R.id.frameLayout);
-//        replaceFragment(new HomeFragment());
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -74,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
                         item.setChecked(true);
                         replaceFragment(new ExploreFragment());
 
-//                        FragmentUtils.replace(new ExploreFragment(), MainActivity.this, R.id.frameLayout);
                         break;
                     case R.id.account_user:
                         item.setChecked(true);

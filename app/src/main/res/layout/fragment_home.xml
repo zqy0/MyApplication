@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -8,6 +9,19 @@
         android:layout_width="match_parent"
         android:layout_height="180dp">
 
+
+        <ImageSwitcher
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/cardview_light_background"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/home_im_main"
+            android:contentDescription="主页图片一" />
     </android.support.v7.widget.CardView>
 
     <GridLayout

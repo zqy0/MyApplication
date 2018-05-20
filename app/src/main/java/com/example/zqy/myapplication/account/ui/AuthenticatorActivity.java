@@ -34,14 +34,7 @@ public class AuthenticatorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_authenticator);
         FragmentUtils.add(new AuthenticatorSignInFragment(), this, android.R.id.content);
 
-//        replaceFragment(new AuthenticatorFragment());
     }
 
-//    private void replaceFragment(Fragment fragment) {
-//        FragmentManager fragmentManager = getSupportFragmentManager();
-//        FragmentTransaction transaction = fragmentManager.beginTransaction();
-//        transaction.replace(R.id.frameLayout2, fragment);
-//        transaction.commit();
-//    }
 
 }

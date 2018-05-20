@@ -29,11 +29,12 @@ public class SettingsFragment extends Fragment{
                              @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_settings, container, false);
+        // 初始化toolbar
         InitToolBarUtils.initToolbar(this, R.id.include_toolbar, R.string.settings,
                 true);
 
 
-        Button button1 = view.findViewById(R.id.btn_logout);
+        Button button1 = view.findViewById(R.id.btn_settings_logout);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

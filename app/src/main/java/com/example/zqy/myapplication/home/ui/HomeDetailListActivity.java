@@ -26,6 +26,7 @@ import cn.bmob.v3.listener.FindListener;
 
 /**
  * Created by zqy on 17-10-29.
+ * 商品栏列表
  */
 
 public class HomeDetailListActivity extends BaseActivity{

@@ -42,7 +42,7 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     implementation 'com.github.bumptech.glide:glide:4.3.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.3.1'
-    //    implementation 'com.squareup.okhttp3:okhttp:3.9.0'
-    implementation 'cn.bmob.android:bmob-sdk:3.5.8'
+//    implementation 'com.squareup.okhttp3:okhttp:3.9.0'
+    implementation 'cn.bmob.android:bmob-sdk:3.6.0'
     implementation 'org.greenrobot:eventbus:3.1.1'
 }

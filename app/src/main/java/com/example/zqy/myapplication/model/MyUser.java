@@ -11,6 +11,15 @@ public class MyUser extends BmobUser {
     private Integer age;
     private Integer num;
     private Boolean sex;
+    private Integer level;
+
+    public Integer getLevel() {
+        return level;
+    }
+
+    public void setLevel(Integer level) {
+        this.level = level;
+    }
 
     public Integer getAge() {
         return age;

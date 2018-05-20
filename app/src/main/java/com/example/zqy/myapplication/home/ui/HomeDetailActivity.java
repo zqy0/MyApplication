@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.example.zqy.myapplication.BaseActivity;
 import com.example.zqy.myapplication.R;
 import com.example.zqy.myapplication.account.ui.AuthenticatorActivity;
+import com.example.zqy.myapplication.model.AdminAccount;
 import com.example.zqy.myapplication.model.Order;
 import com.example.zqy.myapplication.model.UserAccount;
 import com.example.zqy.myapplication.utils.LogUtils;
@@ -57,12 +58,9 @@ public class HomeDetailActivity extends BaseActivity {
 
         // 从列表页获得传递的数据
         Bundle bundle = getIntent().getExtras();
-
         assert bundle != null;
         final Float food_price = bundle.getFloat("food_price");
         String food_price_str = String.valueOf(food_price);
-
-
 
         tv_detail_price.setText(food_price_str);
 
@@ -145,8 +143,9 @@ public class HomeDetailActivity extends BaseActivity {
                         LogUtils.d("Home", String.valueOf(order_prices));
 
                         Float current_money = account_money - order_prices;
+                        // 如果用户账户金额足够
                         if (current_money >= 0.0) {
-                            // 更新账户余额
+                            // 更新用户账户余额
                             userAccount.setAccount_money(current_money);
                             LogUtils.d("当前账户金额", String.valueOf(userAccount.getAccount_money()));
 
@@ -160,6 +159,41 @@ public class HomeDetailActivity extends BaseActivity {
                                     }
                                 }
                             });
+
+                            // 更新商户账户余额
+                            BmobQuery<AdminAccount> adminAccountBmobQuery = new BmobQuery<>();
+                            // 从列表页获得传递的数据
+                            Bundle bundle = getIntent().getExtras();
+                            assert bundle != null;
+                            String food_seller = bundle.getString("food_seller");
+
+                            adminAccountBmobQuery.addWhereEqualTo("seller_uid", food_seller);
+                            adminAccountBmobQuery.findObjects(new FindListener<AdminAccount>() {
+                                @Override
+                                public void done(List<AdminAccount> list, BmobException e) {
+                                    if (list != null && list.size() > 0) {
+                                        AdminAccount adminAccount = list.get(0);
+                                        Float admin_account_money = adminAccount.getAccount_money();
+                                        Float admin_current_money = admin_account_money + order_prices;
+                                        // 设置商户增加的金额
+                                        adminAccount.setAccount_money(admin_current_money);
+                                        adminAccount.update(new UpdateListener() {
+                                            @Override
+                                            public void done(BmobException e) {
+                                                if (e == null) {
+                                                    LogUtils.d("Home","商户金额变动成功");
+                                                } else {
+                                                    LogUtils.d("Home","商户金额变动失败");
+                                                }
+                                            }
+                                        });
+                                    }
+
+                                }
+                            });
+
+
+
                             // 提交订单信息
                             push_order();
 
@@ -177,6 +211,7 @@ public class HomeDetailActivity extends BaseActivity {
      */
     private void push_order() {
         BmobUser user = BmobUser.getCurrentUser();
+
         // 从列表页获得传递的数据
         Bundle bundle = getIntent().getExtras();
 
@@ -184,9 +219,7 @@ public class HomeDetailActivity extends BaseActivity {
         String food_id = bundle.getString("food_id");
         String food_name = bundle.getString("food_name");
         String food_seller = bundle.getString("food_seller");
-
         Float food_price = bundle.getFloat("food_price");
-        String food_price_str = String.valueOf(food_price);
 
         //    订购菜品
         Order order = new Order();

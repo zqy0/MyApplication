@@ -19,20 +19,3 @@
 
 </LinearLayout>
 
-<!--<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
-    <!--xmlns:tools="http://schemas.android.com/tools"-->
-    <!--android:id="@+id/linearLayout3"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="56dp"-->
-    <!--tools:layout_editor_absoluteY="25dp">-->
-
-    <!--<android.support.v7.widget.Toolbar-->
-        <!--android:id="@+id/include_toolbar"-->
-        <!--android:layout_width="384dp"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:background="?attr/colorPrimary"-->
-        <!--android:minHeight="?attr/actionBarSize"-->
-        <!--android:theme="?attr/actionBarTheme" />-->
-
-<!--</android.support.constraint.ConstraintLayout>-->

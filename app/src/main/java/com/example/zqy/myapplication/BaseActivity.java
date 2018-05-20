@@ -33,8 +33,6 @@ public class BaseActivity extends AppCompatActivity{
             case R.id.app_bar_search:
                 Toast.makeText(this, "搜索中", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.app_bar_setting:
-                break;
         }
         return true;
     }

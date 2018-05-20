@@ -48,6 +48,7 @@
                 android:inputType="textPassword" />
         </android.support.design.widget.TextInputLayout>
 
+        <!--<Button-->
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/btn_login"
             android:layout_width="fill_parent"

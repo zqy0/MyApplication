@@ -8,21 +8,23 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageSwitcher;
 import android.widget.LinearLayout;
+import android.widget.ViewSwitcher;
 
 import com.example.zqy.myapplication.R;
 import com.example.zqy.myapplication.utils.InitToolBarUtils;
 import com.example.zqy.myapplication.utils.ToastUtils;
 
 /**
- * Created by zqy on 17-10-24.
+ * Created by zqy on 18-3-27.
  */
+public class HomeFragmentTes extends Fragment implements ViewSwitcher.ViewFactory, View.OnTouchListener{
 
-public class HomeFragment extends Fragment {
 
 
     @Nullable
@@ -131,4 +133,14 @@ public class HomeFragment extends Fragment {
         return true;
     }
 
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        return false;
+    }
+
+    @Override
+    public View makeView() {
+        return null;
+    }
 }
+

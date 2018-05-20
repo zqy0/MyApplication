@@ -52,14 +52,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/user_layout" />
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="当前余额"
-        app:layout_constraintBaseline_toBaselineOf="@+id/tv_money"
-        app:layout_constraintStart_toEndOf="@+id/btn_money_init" />
-
     <Button
         android:id="@+id/btn_money_init"
         android:layout_width="wrap_content"
@@ -80,15 +72,15 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/split_line" />
 
-    <TextView
-        android:id="@+id/tv_money"
+    <Button
+        android:id="@+id/btn_money_admin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="7dp"
-        android:layout_marginTop="43dp"
-        android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/btn_money_query" />
+        android:layout_marginTop="104dp"
+        android:text="管理员余额初始化"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/split_line" />
 
 
 </android.support.constraint.ConstraintLayout>

@@ -14,9 +14,8 @@ import com.example.zqy.myapplication.R;
  */
 
 public class InitToolBarUtils {
+
     public InitToolBarUtils() {}
-
-
 
 
     // Fragment返回Activity
